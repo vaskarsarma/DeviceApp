@@ -17,7 +17,7 @@ const DevicesList = () => {
     const tempStats = {
       name: name,
       deviceId: { '_id': _id },
-      temperature: Math.floor(random() * 100) + 1, // Generate random number from 1 to 100
+      temperature: Math.floor(Math.random() * 100) + 1, // Generate random number from 1 to 100
     }
     addDeviceTemperature(tempStats).then(_ => {
       setDevices([...devices]);

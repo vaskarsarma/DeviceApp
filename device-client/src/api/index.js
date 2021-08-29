@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const apidomain = 'http://localhost:4000';
+const apidomain = process.env.APIDOMAIN || 'http://localhost:4000';
 
 export function addDevice(body) {
   return axios.post(`${apidomain}/devices/add`, body)

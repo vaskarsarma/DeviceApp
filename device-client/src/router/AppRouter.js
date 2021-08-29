@@ -22,7 +22,8 @@ const AppRouter = () => {
   }, []);
 
   // Open Socket connection with Server
-  const socket = openSocket('http://localhost:4000');
+  const apidomain = process.env.APIDOMAIN || 'http://localhost:4000';
+  const socket = openSocket(apidomain);
   socket.on('managedevice', data => {
     if (data.action === 'add' || data.action === 'update' || data.action === 'delete') {
       console.log("New device added");

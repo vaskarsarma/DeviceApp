@@ -17,8 +17,12 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true,
 }));
+
+// console.log(process.env.ALLOWEDDOMAIN);
+// console.log(process.env.PORT);
+
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.ALLOWEDDOMAIN || 'http://localhost:3000',
 }));
 app.use('/devices', deviceRoutes);
 app.use('/devices/stats', deviceTempRoutes);

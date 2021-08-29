@@ -19,7 +19,8 @@ export default class GetTransactionCount extends Component {
     this.getTransactions();
 
     // Open Socket connection with Server
-    const socket = openSocket('http://localhost:4000');
+    const apidomain = process.env.APIDOMAIN || 'http://localhost:4000';
+    const socket = openSocket(apidomain);
     socket.on('addtempstats', data => {
       if (data.action === 'add') {
         console.log("Update tempurature stats triggered");
