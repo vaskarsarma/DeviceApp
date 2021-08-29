@@ -1,0 +1,19 @@
+version: "2.3"
+services:
+
+  devicemanagementservice:
+    container_name: devicemanagementservice
+    build:
+      context: ./devicemanagementservice
+      dockerfile: Dockerfile
+    image: vaskar/devicemanagementservice
+    ports:
+      - "4000:4000"
+  device-client:
+    container_name: device-client
+    build:
+      context: ./device-client
+      dockerfile: Dockerfile
+    image: vaskar/device-client
+    ports:
+      - "3000:3000"
