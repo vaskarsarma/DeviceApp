@@ -1,7 +1,8 @@
 {
-  "name": "vaskar-nodejsdockerjestlint-app",
+  "name": "devicemanagementservice",
   "version": "1.0.0",
-  "description": "",
+  "description": "Device Service Microservice",
+  "author": "Vaskar Sarma",
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./",
@@ -11,7 +12,6 @@
     "test": "jest"
   },
   "keywords": [],
-  "author": "Vaskar Sarma",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
