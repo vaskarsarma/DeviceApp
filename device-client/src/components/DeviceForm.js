@@ -9,13 +9,13 @@ const DeviceForm = (props) => {
     };
   });
 
-  const [errorMsg, setErrorMsg] = useState('');
+  let [errorMsg, setErrorMsg] = useState('');
   const { name, type } = device;
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
     const values = [name, type];
-    let errorMsg = '';
+    errorMsg = '';
 
     const allFieldsFilled = values.every((field) => {
       const value = `${field}`.trim();
@@ -23,11 +23,11 @@ const DeviceForm = (props) => {
     });
 
     if (allFieldsFilled) {
-      const device = {
+      const _device = {
         name,
         type,
       };
-      props.handleOnSubmit(device);
+      props.handleOnSubmit(_device);
     } else {
       errorMsg = 'Please fill out all the fields.';
     }

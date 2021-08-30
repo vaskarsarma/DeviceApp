@@ -12,7 +12,6 @@ const deviceSchema = require('../models/device');
 // CREATE device
 router.route('/add').post((req, res, next) => {
   deviceSchema.create(req.body, (error, data) => {
-    console.log(JSON.stringify(req.body));
     if (error) {
       return next(error);
     }
@@ -50,7 +49,6 @@ router.route('/update/:id').put((req, res, next) => {
     $set: req.body,
   }, { new: true }, (error, data) => {
     if (error) {
-      console.log(error);
       return next(error);
     }
     // Trigger change notification to all clinets

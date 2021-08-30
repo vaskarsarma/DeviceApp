@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getTransactionCount } from "../api";
 import { Form, Button } from 'react-bootstrap';
 import openSocket from 'socket.io-client';
+// import config from '../config/config';
 
 export default class GetTransactionCount extends Component {
 
@@ -19,11 +20,11 @@ export default class GetTransactionCount extends Component {
     this.getTransactions();
 
     // Open Socket connection with Server
-    const apidomain = process.env.REACT_APP_APIDOMAIN;
+    const apidomain = window._env_.REACT_APP_APIDOMAIN;
     const socket = openSocket(apidomain);
     socket.on('addtempstats', data => {
       if (data.action === 'add') {
-        console.log("Update tempurature stats triggered");
+        console.log("Update temperature stats triggered");
         this.getTransactions();
       }
     })
@@ -45,8 +46,6 @@ export default class GetTransactionCount extends Component {
 
   getTransactions() {
     getTransactionCount(this.state.fromDate, this.state.toDate).then((results) => {
-      console.log(results);
-      console.log(results.length);
       if (results !== null) {
         this.setState({
           transactionInfo: results,

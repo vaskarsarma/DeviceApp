@@ -16,19 +16,16 @@ const AppRouter = () => {
 
   useEffect(() => {
     deviceList().then((results) => {
-      console.log(results);
       setDevices(results);
     })
   }, []);
 
   // Open Socket connection with Server
-  const apidomain = process.env.REACT_APP_APIDOMAIN;
+  const apidomain = window._env_.REACT_APP_APIDOMAIN;
   const socket = openSocket(apidomain);
   socket.on('managedevice', data => {
     if (data.action === 'add' || data.action === 'update' || data.action === 'delete') {
-      console.log("New device added");
       deviceList().then((results) => {
-        console.log(results);
         setDevices(results);
       })
     }

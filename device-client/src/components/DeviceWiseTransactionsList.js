@@ -11,28 +11,32 @@ export default class DeviceWiseTransactionsList extends Component {
       deviceStats: [],
       count: 0,
       recordCount: 10,
+      isError: false,
     }
-    //this.onHandleChange=this.onHandleChange.bind(this);
   }
 
   componentDidMount() {
     getDeviceTemperatureStats(this.state.recordCount).then((results) => {
-      console.log(results);
-      console.log(results.length);
       if (results !== null) {
         this.setState({
           deviceStats: results,
-          count: results.length
+          count: results.length,
+          isError: false,
         });
+      }
+      else {
+        this.setState({
+          isError: true
+        })
       }
     });
 
     // Open Socket connection with Server
-    const apidomain = process.env.REACT_APP_APIDOMAIN;
+    const apidomain = window._env_.REACT_APP_APIDOMAIN;
     const socket = openSocket(apidomain);
     socket.on('addtempstats', data => {
       if (data.action === 'add') {
-        console.log("Update tempurature stats triggered");
+        console.log("Update temperature stats triggered");
         this.addStats(data.deviceStat);
       }
     })
@@ -58,15 +62,6 @@ export default class DeviceWiseTransactionsList extends Component {
       deviceInfo = (<div>
         <p>View top {this.state.recordCount} transactions</p>
 
-        {/* <select defaultValue={this.state.recordCount} onChange={this.onHandleChange}>
-      <option value="default" disabled hidden>
-        Choose Transaction Counts
-      </option>
-      <option value="5">5</option>
-      <option selected  value="10">10</option>
-      <option value="20">20</option>
-    </select> */}
-
         <table className="table table-bordered">
           <thead>
             <tr>
@@ -82,6 +77,10 @@ export default class DeviceWiseTransactionsList extends Component {
         </table>
       </div>
       )
+    }
+
+    if (this.state.isError) {
+      deviceInfo = (<p className="errorMsg"p>OOPS!!!Please try again later.</p>);
     }
 
     return (

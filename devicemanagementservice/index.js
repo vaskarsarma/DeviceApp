@@ -8,7 +8,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const createError = require('http-errors');
-const { alloweddomain, port } = require('./src/config/config');
+const { alloweddomain, port, myname } = require('./src/config/config');
 const dbConfig = require('./src/database/db');
 const deviceRoutes = require('./src/routes/device-route');
 const deviceTempRoutes = require('./src/routes/device-temp-route');
@@ -19,8 +19,6 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true,
 }));
-
-console.log('Device-server >> ', alloweddomain, port);
 
 app.use(cors({
   origin: alloweddomain,

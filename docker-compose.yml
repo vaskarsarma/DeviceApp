@@ -2,22 +2,24 @@ version: "2.3"
 services:
 
   devicemanagementservice:
+    extends:
+      file: docker-compose.base.yml
+      service: devicemanagementservice
     container_name: devicemanagementservice
     build:
       context: ./devicemanagementservice
       dockerfile: Dockerfile
     image: vaskar/devicemanagementservice
-    environment:
-      - ALLOWEDDOMAIN = http://localhost:3000
     ports:
-      - "4000:4000"
+      - "8888:8888"
   device-client:
+    extends:
+      file: docker-compose.base.yml
+      service: device-client  
     container_name: device-client
     build:
       context: ./device-client
       dockerfile: Dockerfile
     image: vaskar/device-client
-    environment: 
-      - REACT_APP_APIDOMAIN = http://localhost:4000
     ports:
       - "3000:80"
