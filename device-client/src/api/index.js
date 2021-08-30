@@ -1,6 +1,7 @@
 const axios = require('axios');
 
-const apidomain = process.env.APIDOMAIN || 'http://localhost:4000';
+const apidomain = process.env.REACT_APP_APIDOMAIN;
+console.log("Device-client >> ", apidomain);
 
 export function addDevice(body) {
   return axios.post(`${apidomain}/devices/add`, body)

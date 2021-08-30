@@ -7,9 +7,8 @@ services:
       context: ./devicemanagementservice
       dockerfile: Dockerfile
     image: vaskar/devicemanagementservice
-    environment: 
-      - PORT = '4000'
-      - ALLOWEDDOMAIN = 'http://localhost:3000'
+    environment:
+      - ALLOWEDDOMAIN = http://localhost:3000
     ports:
       - "4000:4000"
   device-client:
@@ -19,6 +18,6 @@ services:
       dockerfile: Dockerfile
     image: vaskar/device-client
     environment: 
-      - APIDOMAIN = 'http://localhost:4000'    
+      - REACT_APP_APIDOMAIN = http://localhost:4000
     ports:
-      - "3000:3000"
+      - "3000:80"

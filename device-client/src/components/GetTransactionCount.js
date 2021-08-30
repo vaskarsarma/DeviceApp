@@ -19,7 +19,7 @@ export default class GetTransactionCount extends Component {
     this.getTransactions();
 
     // Open Socket connection with Server
-    const apidomain = process.env.APIDOMAIN || 'http://localhost:4000';
+    const apidomain = process.env.REACT_APP_APIDOMAIN;
     const socket = openSocket(apidomain);
     socket.on('addtempstats', data => {
       if (data.action === 'add') {

@@ -3,10 +3,12 @@
 /* eslint-disable global-require */
 const express = require('express');
 const http = require('http');
-const createError = require('http-errors');
+
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const createError = require('http-errors');
+const { alloweddomain, port } = require('./src/config/config');
 const dbConfig = require('./src/database/db');
 const deviceRoutes = require('./src/routes/device-route');
 const deviceTempRoutes = require('./src/routes/device-temp-route');
@@ -18,11 +20,10 @@ app.use(express.urlencoded({
   extended: true,
 }));
 
-// console.log(process.env.ALLOWEDDOMAIN);
-// console.log(process.env.PORT);
+console.log('Device-server >> ', alloweddomain, port);
 
 app.use(cors({
-  origin: process.env.ALLOWEDDOMAIN || 'http://localhost:3000',
+  origin: alloweddomain,
 }));
 app.use('/devices', deviceRoutes);
 app.use('/devices/stats', deviceTempRoutes);
@@ -48,7 +49,6 @@ io.on('connection', (socket) => {
   console.log('Client connected');
 });
 
-const port = process.env.PORT || 4000;
 server.listen(port, () => {
   console.log(`Started server with port ${port}`);
 });

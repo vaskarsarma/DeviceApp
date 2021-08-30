@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { isEmpty, random } from 'lodash';
+import { isEmpty } from 'lodash';
 import Device from './Device';
 import { deleteDevice, addDeviceTemperature } from '../api'
 import DevicesContext from '../context/DevicesContext';

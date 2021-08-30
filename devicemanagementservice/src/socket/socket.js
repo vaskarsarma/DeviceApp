@@ -1,13 +1,16 @@
 /* eslint-disable global-require */
 const { Server } = require('socket.io');
+const { alloweddomain } = require('../config/config');
 
 let io;
+
+console.log('Socket IO >> ', alloweddomain);
 
 module.exports = {
   init: (httpServer) => {
     io = new Server(httpServer, {
       cors: {
-        origin: '*',
+        origin: alloweddomain,
       },
     });
     return io;

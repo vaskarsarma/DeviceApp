@@ -18,12 +18,12 @@ RUN npm install
 COPY . /app
 
 # start app
-CMD ["npm", "start"]
+# CMD ["npm", "start"]
 
-# RUN npm run build
+RUN npm run build
 
-# # production environment
-# FROM nginx:stable-alpine
-# COPY --from=build /app/build /usr/share/nginx/html
-# EXPOSE 80
-# CMD ["nginx", "-g", "daemon off;"]
+# production environment
+FROM nginx:stable-alpine
+COPY --from=build-step /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
