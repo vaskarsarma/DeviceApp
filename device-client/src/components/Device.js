@@ -18,15 +18,19 @@ const Device = ({
         <div className="device-details">
           <div>Device Type: {type}</div>
         </div>
-        <Button variant="primary" onClick={() => history.push(`/edit/${_id}`)}>
-          Edit
-        </Button>{' '}
-        <Button variant="danger" onClick={() => handleRemoveDevice(_id)}>
-          Delete
-        </Button>{' '}
-        <Button variant="warning" onClick={() => handleAddDeviceStats(_id, name)}>
-          Stats
-        </Button>
+        <div>
+          <Button variant="primary" onClick={() => history.push(`/edit/${_id}`)}>
+            Edit
+          </Button>{' '}
+          <Button variant="danger" onClick={() => handleRemoveDevice(_id)}>
+            Delete
+          </Button>
+          </div>
+          <div className="device-details">
+          <Button variant="warning" onClick={() => handleAddDeviceStats(_id, name)}>
+            Check Temperature
+          </Button>
+        </div>
       </Card.Body>
     </Card>
   );

@@ -38,8 +38,9 @@ const AppRouter = () => {
         <div className="main-content">
           <DevicesContext.Provider value={{ devices, setDevices }}>
             <Switch>
-              <Route component={GetTransactionCount} path="/" exact={true} />
-              <Route component={DeviceWiseTransactionsList} path="/transactions" />
+              <Route component={DevicesList} path="/" exact={true}/>
+              <Route component={GetTransactionCount} path="/transactionstats" />
+              <Route component={DeviceWiseTransactionsList} path="/transactionslist" />
               <Route component={DevicesList} path="/list" />
               <Route component={AddDevice} path="/add" />
               <Route component={EditDevice} path="/edit/:_id" />

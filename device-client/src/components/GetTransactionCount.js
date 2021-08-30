@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getTransactionCount } from "../api";
 import { Form, Button } from 'react-bootstrap';
 import openSocket from 'socket.io-client';
-// import config from '../config/config';
+import { formatDate } from '../utils/utils';
 
 export default class GetTransactionCount extends Component {
 
@@ -12,7 +12,7 @@ export default class GetTransactionCount extends Component {
       transactionInfo: [],
       count: 0,
       fromDate: '2021-08-27',
-      toDate: '2021-08-29',
+      toDate: formatDate(new Date()),
     }
   }
 

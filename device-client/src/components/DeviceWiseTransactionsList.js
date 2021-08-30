@@ -67,7 +67,7 @@ export default class DeviceWiseTransactionsList extends Component {
             <tr>
               <th scope="col">#</th>
               <th scope="col">Device Name</th>
-              <th scope="col">Transaction Count</th>
+              <th scope="col">Temperature</th>
               <th scope="col">Transaction Date</th>
             </tr>
           </thead>
