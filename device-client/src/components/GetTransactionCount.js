@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getTransactionCount } from "../api";
 import { Form, Button } from 'react-bootstrap';
 import openSocket from 'socket.io-client';
-import { formatDate } from '../utils/utils';
+import { formatDateandAddOneDay } from '../utils/utils';
 
 export default class GetTransactionCount extends Component {
 
@@ -12,7 +12,7 @@ export default class GetTransactionCount extends Component {
       transactionInfo: [],
       count: 0,
       fromDate: '2021-08-27',
-      toDate: formatDate(new Date()),
+      toDate: formatDateandAddOneDay(new Date()),
     }
   }
 
@@ -27,7 +27,14 @@ export default class GetTransactionCount extends Component {
         console.log("Update temperature stats triggered");
         this.getTransactions();
       }
-    })
+    });
+
+    socket.on('deletetempstats', data => {
+      if (data.action === 'delete') {
+        console.log("Update temperature stats triggered");
+        this.getTransactions();
+      }
+    });
   }
 
   handleOnSubmit = (e) => {

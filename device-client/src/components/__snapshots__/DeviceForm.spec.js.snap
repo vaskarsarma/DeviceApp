@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DeviceForm /> Render Correctly 1`] = `
+<div
+  className="main-form"
+>
+  <Form
+    inline={false}
+    onSubmit={[Function]}
+  >
+    <FormGroup
+      controlId="name"
+    >
+      <FormLabel
+        column={false}
+        srOnly={false}
+      >
+        Device Name
+      </FormLabel>
+      <FormControl
+        className="input-control"
+        name="name"
+        onChange={[Function]}
+        placeholder="Enter name of device"
+        required={true}
+        type="text"
+        value=""
+      />
+    </FormGroup>
+    <FormGroup
+      controlId="type"
+    >
+      <FormLabel
+        column={false}
+        srOnly={false}
+      >
+        Device Type
+      </FormLabel>
+      <FormControl
+        className="input-control"
+        name="type"
+        onChange={[Function]}
+        placeholder="Enter type of the Device"
+        required={true}
+        type="text"
+        value=""
+      />
+    </FormGroup>
+    <Button
+      active={false}
+      className="submit-btn"
+      disabled={false}
+      type="submit"
+      variant="primary"
+    >
+      Submit
+    </Button>
+  </Form>
+</div>
+`;

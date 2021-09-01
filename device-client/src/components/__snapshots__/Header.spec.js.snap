@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> Render Correctly 1`] = `
+<header>
+  <h1>
+    Device Management App
+  </h1>
+  <hr />
+  <div
+    className="links"
+  >
+    <NavLink
+      activeClassName="active"
+      className="link"
+      to="/"
+    >
+      Device List
+    </NavLink>
+    <NavLink
+      activeClassName="active"
+      className="link"
+      to="/add"
+    >
+      Add Device
+    </NavLink>
+    <NavLink
+      activeClassName="active"
+      className="link"
+      exact={true}
+      to="/transactionstats"
+    >
+      Transactions Stats-(Max/Min)
+    </NavLink>
+    <NavLink
+      activeClassName="active"
+      className="link"
+      to="/transactionslist"
+    >
+      Latest Transactions
+    </NavLink>
+  </div>
+</header>
+`;

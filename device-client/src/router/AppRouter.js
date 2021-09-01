@@ -1,5 +1,11 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter, Switch, Route, Redirect,
+} from 'react-router-dom';
+import openSocket from 'socket.io-client';
 import Header from '../components/Header';
 import AddDevice from '../components/AddDevice';
 import DevicesList from '../components/DevicesList';
@@ -8,28 +14,26 @@ import EditDevice from '../components/EditDevice';
 import DevicesContext from '../context/DevicesContext';
 import DeviceWiseTransactionsList from '../components/DeviceWiseTransactionsList';
 import GetTransactionCount from '../components/GetTransactionCount';
-import openSocket from 'socket.io-client';
 
 const AppRouter = () => {
-
   const [devices, setDevices] = useState([]);
 
   useEffect(() => {
     deviceList().then((results) => {
       setDevices(results);
-    })
+    });
   }, []);
 
   // Open Socket connection with Server
   const apidomain = window._env_.REACT_APP_APIDOMAIN;
   const socket = openSocket(apidomain);
-  socket.on('managedevice', data => {
+  socket.on('managedevice', (data) => {
     if (data.action === 'add' || data.action === 'update' || data.action === 'delete') {
       deviceList().then((results) => {
         setDevices(results);
-      })
+      });
     }
-  })
+  });
 
   return (
     <BrowserRouter>

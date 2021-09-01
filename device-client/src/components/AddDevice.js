@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
 import DeviceForm from './DeviceForm';
 import DevicesContext from '../context/DevicesContext';

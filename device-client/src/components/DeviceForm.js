@@ -1,13 +1,14 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable prefer-const */
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 const DeviceForm = (props) => {
-  const [device, setDevice] = useState(() => {
-    return {
-      name: props.device ? props.device.name : '',
-      type: props.device ? props.device.type : '',
-    };
-  });
+  const [device, setDevice] = useState(() => ({
+    name: props.device ? props.device.name : '',
+    type: props.device ? props.device.type : '',
+  }));
 
   let [errorMsg, setErrorMsg] = useState('');
   const { name, type } = device;
@@ -38,7 +39,7 @@ const DeviceForm = (props) => {
     const { name: _name, value } = event.target;
     setDevice((prevState) => ({
       ...prevState,
-      [_name]: value
+      [_name]: value,
     }));
   };
 

@@ -16,6 +16,28 @@ export default class DeviceWiseTransactionsList extends Component {
   }
 
   componentDidMount() {
+    this.getTransactions();
+
+    // Open Socket connection with Server
+    const apidomain = window._env_.REACT_APP_APIDOMAIN;
+    const socket = openSocket(apidomain);
+    
+    socket.on('addtempstats', data => {
+      if (data.action === 'add') {
+        console.log("Update temperature stats triggered");
+        this.addStats(data.deviceStat);
+      }
+    });
+
+    socket.on('deletetempstats', data => {
+      if (data.action === 'delete') {
+        console.log("Update temperature stats triggered");
+        this.getTransactions();
+      }
+    });
+  }
+
+  getTransactions() {
     getDeviceTemperatureStats(this.state.recordCount).then((results) => {
       if (results !== null) {
         this.setState({
@@ -27,19 +49,9 @@ export default class DeviceWiseTransactionsList extends Component {
       else {
         this.setState({
           isError: true
-        })
+        });
       }
     });
-
-    // Open Socket connection with Server
-    const apidomain = window._env_.REACT_APP_APIDOMAIN;
-    const socket = openSocket(apidomain);
-    socket.on('addtempstats', data => {
-      if (data.action === 'add') {
-        console.log("Update temperature stats triggered");
-        this.addStats(data.deviceStat);
-      }
-    })
   }
 
   addStats = deviceStat => {

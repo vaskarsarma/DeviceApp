@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GetTransactionCount /> Render Correctly 1`] = `
+<Fragment>
+  <Form
+    className="form-inline"
+    inline={false}
+    onSubmit={[Function]}
+  >
+    <FormGroup
+      className="form-group mb-2"
+      controlId="fromDate"
+    >
+      <FormLabel
+        className="sr-only"
+        column={false}
+        srOnly={false}
+      >
+        From
+      </FormLabel>
+      <FormControl
+        className="form-control"
+        name="fromDate"
+        onChange={[Function]}
+        placeholder="Enter from date"
+        required={true}
+        type="Date"
+        value="2021-08-27"
+      />
+    </FormGroup>
+    <FormGroup
+      className="form-group mb-2"
+      controlId="toDate"
+    >
+      <FormLabel
+        className="sr-only"
+        column={false}
+        srOnly={false}
+      >
+        To
+      </FormLabel>
+      <FormControl
+        className="form-control"
+        name="toDate"
+        onChange={[Function]}
+        placeholder="Enter to date"
+        required={true}
+        type="Date"
+        value="2021-09-02"
+      />
+    </FormGroup>
+    <Button
+      active={false}
+      className="btn btn-primary mb-2"
+      disabled={false}
+      type="submit"
+      variant="primary"
+    >
+      Submit
+    </Button>
+  </Form>
+  <div
+    className="device-stats-list"
+  >
+    <p>
+      View max/min transactions count filtered by DataRange
+    </p>
+  </div>
+</Fragment>
+`;

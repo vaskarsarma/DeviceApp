@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> should render correctly 1`] = `
+<BrowserRouter>
+  <div>
+    <Header />
+    <div
+      className="main-content"
+    >
+      <ContextProvider
+        value={
+          Object {
+            "devices": Array [],
+            "setDevices": [Function],
+          }
+        }
+      >
+        <Switch>
+          <Route
+            component={[Function]}
+            exact={true}
+            path="/"
+          />
+          <Route
+            component={[Function]}
+            path="/transactionstats"
+          />
+          <Route
+            component={[Function]}
+            path="/transactionslist"
+          />
+          <Route
+            component={[Function]}
+            path="/list"
+          />
+          <Route
+            component={[Function]}
+            path="/add"
+          />
+          <Route
+            component={[Function]}
+            path="/edit/:_id"
+          />
+          <Route
+            component={[Function]}
+          />
+        </Switch>
+      </ContextProvider>
+    </div>
+  </div>
+</BrowserRouter>
+`;

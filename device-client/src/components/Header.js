@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Header = () => {
-  return (
+const Header = () => (
     <header>
       <h1>Device Management App</h1>
       <hr />
@@ -18,10 +17,9 @@ const Header = () => {
         </NavLink>
         <NavLink to="/transactionslist" className="link" activeClassName="active">
           Latest Transactions
-        </NavLink>        
+        </NavLink>
       </div>
     </header>
-  );
-};
+);
 
 export default Header;

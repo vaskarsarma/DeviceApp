@@ -5,6 +5,7 @@ const express = require('express');
 
 const router = express.Router();
 
+const mongoose = require('mongoose');
 const io = require('../socket/socket');
 
 // device Model
@@ -49,7 +50,7 @@ router.route('/transactionlist/:fromDate/:toDate').get((req, res, next) => {
   deviceTemperatureSchema.aggregate([
     {
       $match: {
-        created_at: { $gte: new Date(req.params.fromDate), $lt: new Date(req.params.toDate) },
+        created_at: { $gte: new Date(req.params.fromDate), $lte: new Date(req.params.toDate) },
       },
     },
     {
@@ -73,6 +74,25 @@ router.route('/transactionlist/:fromDate/:toDate').get((req, res, next) => {
 
       res.json(results);
     });
+});
+
+// Delete device stats
+router.route('/del/:deviceId').delete((req, res, next) => {
+  deviceTemperatureSchema.deleteMany(
+    { deviceId: mongoose.Types.ObjectId(req.params.deviceId) },
+    (error, data) => {
+      if (error) {
+        return next(error);
+      }
+
+      // Trigger change notification to all clinets
+      io.getIO().emit('deletetempstats', { action: 'delete' });
+
+      res.status(200).json({
+        msg: data,
+      });
+    },
+  );
 });
 
 module.exports = router;

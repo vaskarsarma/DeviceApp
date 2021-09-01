@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DeviceWiseTransactionsList /> Render Correctly 1`] = `
+<Fragment>
+  <div
+    className="device-stats-list"
+  >
+    <p>
+      View transactions
+    </p>
+  </div>
+</Fragment>
+`;

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Device /> Render Correctly 1`] = `
+<Card
+  body={false}
+  className="device"
+  style={
+    Object {
+      "width": "18rem",
+    }
+  }
+>
+  <CardBody>
+    <CardTitle
+      className="device-title"
+    />
+    <div
+      className="device-details"
+    >
+      <div>
+        Device Type: 
+      </div>
+    </div>
+    <div>
+      <Button
+        active={false}
+        disabled={false}
+        onClick={[Function]}
+        variant="primary"
+      >
+        Edit
+      </Button>
+       
+      <Button
+        active={false}
+        disabled={false}
+        onClick={[Function]}
+        variant="danger"
+      >
+        Delete
+      </Button>
+    </div>
+    <div
+      className="device-details"
+    >
+      <Button
+        active={false}
+        disabled={false}
+        onClick={[Function]}
+        variant="warning"
+      >
+        Check Temperature
+      </Button>
+    </div>
+  </CardBody>
+</Card>
+`;
